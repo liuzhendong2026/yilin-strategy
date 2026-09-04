@@ -203,25 +203,40 @@ svg [fill="#4a6383"]{fill:var(--chart-5)}
 .gap-tag{fill:#8a6d1d;font-weight:700}
 .opp{fill:rgba(201,162,39,.16);stroke:var(--gold);stroke-dasharray:6 5;stroke-width:1.5}
 
+/* ===== S5e 四张现成的牌 ===== */
+.asset-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.asset-card{background:rgba(255,255,255,.03);border:1px solid rgba(242,237,225,.1);border-radius:8px;padding:20px 16px;transition:border-color .3s,transform .3s}
+.asset-card:hover{border-color:rgba(201,162,39,.45);transform:translateY(-2px)}
+.asset-card .no{display:inline-block;font-family:'Noto Serif SC',serif;font-size:11.5px;letter-spacing:.16em;color:var(--navy);background:var(--gold);border-radius:99px;padding:2px 11px;margin-bottom:10px}
+.asset-card h5{font-family:'Noto Serif SC',serif;font-size:14.5px;color:var(--gold-2);line-height:1.6;margin-bottom:8px}
+.asset-card p{font-size:12.5px;line-height:1.85;color:rgba(242,237,225,.7)}
+
 /* ===== S6 ===== */
 #s6{padding:120px 0;background:linear-gradient(180deg,var(--navy-2),var(--navy))}
-.ph-tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:48px 0 28px}
-.ph-tab{cursor:default;border:1px solid rgba(242,237,225,.14);border-radius:10px;padding:24px 24px;transition:.3s;background:rgba(255,255,255,.02);text-align:left;font-family:inherit;color:inherit}
+.ph-tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:48px 0 28px}
+.ph-tab{cursor:pointer;border:1px solid rgba(242,237,225,.14);border-radius:10px;padding:22px 20px;transition:.3s;background:rgba(255,255,255,.02);text-align:left;font-family:inherit;color:inherit}
 .ph-tab:hover{border-color:var(--line);transform:translateY(-2px)}
 .ph-tab.act{border-color:var(--gold);background:linear-gradient(160deg,var(--gold-dim),transparent)}
 .ph-tab .ph{font-size:11px;letter-spacing:.25em;color:var(--gold-2)}
-.ph-tab h4{font-family:'Noto Serif SC',serif;font-size:20px;margin:10px 0 5px}
-.ph-tab .tm{font-size:12.5px;color:rgba(242,237,225,.5)}
+.ph-tab h4{font-family:'Noto Serif SC',serif;font-size:19px;margin:10px 0 5px}
+.ph-tab .tm{font-size:12px;color:rgba(242,237,225,.5);line-height:1.7}
+/* 阶段〇：已完成态，用青色区别于在办阶段 */
+.ph-tab.done .ph{color:#6cbfb2}
+.ph-tab.done .ph::after{content:" ✓";}
 .ph-body{border:1px solid rgba(242,237,225,.1);border-radius:10px;padding:38px;background:rgba(255,255,255,.02);margin-bottom:24px}
 .js .ph-body{display:none}
-.js .ph-body.act{display:grid;grid-template-columns:1.25fr 1fr;gap:38px;animation:fadein .5s}
+.js .ph-body.act{display:grid;grid-template-columns:1.35fr 1fr;gap:38px;animation:fadein .5s}
 @keyframes fadein{from{opacity:0;transform:translateY(12px)}to{opacity:1}}
-.kv{display:grid;grid-template-columns:112px 1fr;gap:12px 20px;font-size:14px;line-height:1.85}
+.kv{display:grid;grid-template-columns:82px 1fr;gap:14px 20px;font-size:13.8px;line-height:1.9;align-content:start}
 .kv b{color:var(--gold-2);font-weight:600;letter-spacing:.04em}
-.kpi{border-left:2px solid var(--line);padding-left:26px}
+.kv span{color:rgba(242,237,225,.78)}
+.kpi{border-left:2px solid var(--line);padding-left:26px;align-content:start}
 .kpi h5{font-size:12px;letter-spacing:.22em;color:rgba(242,237,225,.5);margin-bottom:16px}
-.kpi li{list-style:none;margin-bottom:14px;font-size:14px;color:rgba(242,237,225,.82)}
+.kpi li{list-style:none;margin-bottom:14px;font-size:13.8px;color:rgba(242,237,225,.82);line-height:1.8}
 .kpi li b{color:var(--gold-2);font-family:'Noto Serif SC',serif;font-size:17px}
+/* 升级/触发条件条 */
+.trigger{grid-column:1/-1;margin-top:6px;padding:14px 18px;border:1px dashed rgba(201,162,39,.4);border-radius:8px;font-size:13px;line-height:1.85;color:rgba(242,237,225,.72);background:rgba(201,162,39,.05)}
+.trigger b{color:var(--gold-2)}
 .cpo-tag{display:inline-block;margin:18px 0 8px;font-size:11.5px;letter-spacing:.15em;color:var(--teal);border:1px solid rgba(47,127,116,.5);border-radius:99px;padding:5px 14px}
 .cpo-tag::before{content:"◆ "}
 
@@ -276,7 +291,8 @@ svg [fill="#4a6383"]{fill:var(--chart-5)}
   .g1,.zlj-grid,.caliber,.ph-body.act,.foot-grid{grid-template-columns:1fr}
   .stat-strip{grid-template-columns:repeat(2,1fr)}
   .funnel{grid-template-columns:1fr}
-  .chan,.risk-grid,.big-num-row,.ph-tabs{grid-template-columns:1fr}
+  .chan,.risk-grid,.big-num-row{grid-template-columns:1fr}
+  .ph-tabs,.asset-grid{grid-template-columns:repeat(2,1fr)}
   .vs{grid-template-columns:1fr}
   .tl-row{grid-template-columns:1fr 1fr}
   .wm{display:none}
@@ -307,6 +323,8 @@ svg [fill="#4a6383"]{fill:var(--chart-5)}
   .dtl{padding-left:22px}
   .dtl li{font-size:13.5px;padding-bottom:16px}
   .dtl li::before{left:-27px;width:7px;height:7px}
+  .asset-grid{grid-template-columns:1fr}
+  .ph-tabs{grid-template-columns:1fr}
 }
 
 /* ===== reduced motion ===== */
@@ -331,28 +349,118 @@ section[id]{scroll-margin-top:20px}
 
 /* ===== print ===== */
 @media print{
-  body{background:#fff;color:#000;font-size:11pt;padding-bottom:0}
+  @page{size:A4;margin:13mm 12mm}
+  body{background:#fff;color:#000;font-size:10.5pt;padding-bottom:0}
   #prog,#toc,#totop,.scroll-hint{display:none!important}
   body::before{display:none!important}/* 打印/导出PDF时移除噪点层 */
   .brand-chip img{filter:none!important}/* 白纸上恢复logo原始深蓝 */
-  #hero{min-height:auto;padding:40px 0;background:#fff!important;color:#000!important}
-  #hero h1,#hero h2{color:#000!important}
-  #hero h1 .gd{background:none;-webkit-text-fill-color:#000;color:#000!important}
-  section{padding:30px 0!important;page-break-inside:avoid;background:#fff!important;color:#000!important}
+
+  /* 布局：白底黑字，section 允许自然分页（避免整节 avoid 造成大片留白） */
+  #hero{min-height:auto;padding:24px 0 14px;background:#fff!important;color:#000!important}
+  section{padding:24px 0!important;background:#fff!important;color:#000!important;break-inside:auto}
   section.light{background:#f8f6f0!important}
-  .panel,.cal,.fu,.foot-card,.rk,.chan-c{background:#fff!important;border-color:#ccc!important;color:#000!important;break-inside:avoid}
+  /* 组件级防截断 */
+  .panel,.cal,.fu,.verdict,.stat-strip,.vs,.price-band,.brand-panel,.trigger,.asset-card,.ph-tab,.chartbox{break-inside:avoid}
+  .kicker,h2.st{break-after:avoid}
+
+  /* 动画终态 */
   .rv{opacity:1!important;transform:none!important}
   .bar-anim{transform:none!important}
   path.draw{stroke-dashoffset:0!important}
   .pt,.fade-l{opacity:1!important}
-  .verdict{background:#f5f0e0!important;color:#000!important;border-left-color:#c9a227!important;break-inside:avoid}
   .wm{display:none!important}
+
+  /* ===== 颜色映射：深色底浅字 → 白底深字 ===== */
+  a{color:#000;text-decoration:none}
   .kicker{color:#8a6d1d!important}
   h2.st{color:#000!important}
   .sub{color:#444!important}
+  .src{color:#555!important}
+  .panel{background:#fff!important;border-color:#ccc!important;color:#000!important}
+  .panel h4{color:#8a6d1d!important}
+  .panel .cap{color:#555!important}
+  .verdict{background:#f5f0e0!important;color:#000!important;border-left-color:#c9a227!important}
+  .verdict em{color:#8a6d1d!important}
+
+  /* hero */
+  #hero h1,#hero h2{color:#000!important}
+  #hero h1 .gd{background:none;-webkit-text-fill-color:#000;color:#000!important}
+  .hero-meta{color:#444!important;border-color:#ccc!important}
+  #hero .wrap>div[style]{color:#333!important}
+  #hero em{color:#8a6d1d!important}
+  .stat{background:#fff!important;outline:1px solid #ddd;outline-offset:-1px}
+  .stat .n{color:#8a6d1d!important}
+  .stat .l{color:#444!important}
+  .hero-rule{background:#c9a227!important}
+
+  /* SVG 图表 */
   svg text{fill:#000!important}
   .gridline,.axis{stroke:#ccc!important}
-  a{color:#000;text-decoration:none}
+  #s1 div[style*="dashed"]{background:#faf7ef!important;color:#333!important}
+  #s1 div[style*="dashed"] b{color:#8a6d1d!important}
+
+  /* S3 双口径 + 漏斗 */
+  .cal{background:#fff!important;border-color:#ccc!important;color:#000!important}
+  .cal .tag{color:#8a6d1d!important;border-color:#c9a227!important}
+  .cal .v{color:#000!important}
+  .cal .v small{color:#555!important}
+  .cal.hl .v{color:#8a6d1d!important}
+  .cal .d{color:#333!important}
+  .fu{background:#fff!important;border:1px solid #ccc!important}
+  .fu .t{color:#444!important}
+  .fu .e{color:#333!important}
+  .f1 .n,.f2 .n{color:#8a6d1d!important}
+  .f3 .t,.f3 .e{color:#333!important}
+  .f3 .n{color:#000!important}
+
+  /* S4 竞争格局 */
+  .dtl li{color:#222!important}
+  .dtl li strong{color:#8a6d1d!important}
+  .vs>div{color:#222!important}
+  .vs .bad{background:#f7e8e4!important}
+  .vs .good{background:#e6f2f0!important}
+  .vs .bad b{color:#a5432d!important}
+  .vs .good b{color:#1f665c!important}
+  #s4 .panel div[style*="13.5px"]{color:#222!important}
+  #s4 .panel div[style] b{color:#8a6d1d!important}
+  .brand-title{color:#8a6d1d!important}
+  .brand-card{background:#fff!important;border-color:#ccc!important}
+  .brand-card b{color:#8a6d1d!important}
+  .brand-card span{color:#333!important}
+  .brand-note{color:#333!important}
+  .brand-note b{color:#8a6d1d!important}
+
+  /* S5e 亿林优势（inline 浅色文字批量加深） */
+  #s5e .panel>div{color:#222!important}
+  #s5e .panel>div.cap{color:#555!important}
+  #s5e .panel>div b,#s5e .asset-card b{color:#8a6d1d!important}
+  #s5e .panel>div em{color:#8a6d1d!important}
+  .asset-card{background:#fff!important;border-color:#ccc!important}
+  .asset-card .no{background:#c9a227!important;color:#000!important}
+  .asset-card h5{color:#8a6d1d!important}
+  .asset-card p{color:#333!important}
+
+  /* S6 阶段面板：屏幕上 tab 切换，纸面全部展开 */
+  .ph-tabs{margin:22px 0 12px}
+  .ph-tab{background:#fff!important;border-color:#ccc!important;color:#000!important}
+  .ph-tab h4{color:#000!important}
+  .ph-tab .ph,.ph-tab .tm{color:#555!important}
+  .ph-tab.done .ph{color:#1f665c!important}
+  .js .ph-body{display:grid!important;grid-template-columns:1.35fr 1fr!important;gap:22px;padding:18px!important;margin-bottom:12px}
+  .ph-body{background:#fff!important;border-color:#ccc!important;break-inside:auto}
+  .kv b{color:#8a6d1d!important}
+  .kv span{color:#222!important}
+  .kpi{border-color:#c9a227!important}
+  .kpi h5{color:#666!important}
+  .kpi li{color:#222!important}
+  .kpi li b{color:#8a6d1d!important}
+  .kpi li span{color:#555!important}
+  .trigger{border-color:#c9a227!important;background:#f5f0e0!important;color:#333!important}
+  .trigger b{color:#8a6d1d!important}
+
+  /* 结尾 */
+  #end .fin-line{color:#000!important}
+  #end .fin-line em{background:none;-webkit-text-fill-color:#8a6d1d;color:#8a6d1d!important}
 }
 </style>
 </head>
@@ -629,10 +737,167 @@ section[id]{scroll-margin-top:20px}
 
 
 <!-- ================= S5e 你的舞台 ================= -->
-<section id="s5e"> <div class="wm">伍</div> <div class="wrap"> <div class="rv"><div class="kicker">伍 · 为什么是亿林</div> <h2 class="st">平台已就位，诚邀共创者</h2> <p class="sub">亿林有资金、渠道、政企资源和资本运作能力；而产品与品牌，我们不装懂——这正是发出这份邀约的原因。</p> </div> <div class="rv grid" style="grid-template-columns:repeat(3,1fr);gap:20px;margin-top:44px"> <div class="panel"> <h4>资金与投入</h4> <div style="font-size:13.5px;line-height:2;color:rgba(242,237,225,.8)"> 分阶段投入已规划：验证期十万量级小额起步，达标加码、不达标止损。<b style="color:var(--gold-2)">每一分钱都有纪律</b>，不是一次性豪赌。 </div> </div> <div class="panel"> <h4>渠道与用户资产</h4> <div style="font-size:13.5px;line-height:2;color:rgba(242,237,225,.8)"> 私域500-800人种子用户、适老化业务存量客户协同、政企渠道资源——<b style="color:var(--gold-2)">第一批真实用户不在纸上</b>，在手里。 </div> </div> <div class="panel"> <h4>资本与资源运作</h4> <div style="font-size:13.5px;line-height:2;color:rgba(242,237,225,.8)"> 亿林实业的产业底子与资本运作经验，为品牌的长跑提供融资节奏与资源对接——<b style="color:var(--gold-2)">让专业的人专心做专业的事</b>。 </div> </div> </div> <div class="rv panel" style="margin-top:28px;border-color:var(--line);background:linear-gradient(160deg,var(--gold-dim),rgba(255,255,255,.02))"> <h4>我们在找谁</h4> <div style="font-size:14px;line-height:2.1;color:rgba(242,237,225,.85)"> 诚邀懂产品、懂品牌的核心合伙人，<b style="color:var(--gold-2)">共同定义这个品牌</b>。<br/> 产品定义、品牌方向这些真正的专业命题，我们深知需要一位真正的行家来主导——亿林不越位、不预设答案。具体的角色、分工与合作结构，<em style="font-style:normal;color:var(--gold-2)">等团队组建后再一起商定</em>，这一版规划里写的任何细节，都欢迎推倒重来。 </div> </div> </div> </section>
+<section id="s5e">
+  <div class="wm">伍</div>
+  <div class="wrap">
+    <div class="rv"><div class="kicker">伍 · 为什么是亿林</div>
+      <h2 class="st">平台已就位，诚邀共创者</h2>
+      <p class="sub">亿林有资金、渠道、政企资源和资本运作能力；而产品与品牌，我们不装懂——这正是发出这份邀约的原因。</p>
+    </div>
+
+    <div class="rv grid" style="grid-template-columns:repeat(2,1fr);gap:20px;margin-top:44px">
+      <div class="panel">
+        <h4>资金与投入 · 不是一次性豪赌</h4>
+        <div style="font-size:13.5px;line-height:2;color:rgba(242,237,225,.8)">
+          分阶段投入已规划，<b style="color:var(--gold-2)">达标加码，不达标止损</b>——每一分钱都有纪律。<br/>
+          三年节奏清晰：<b style="color:var(--gold-2)">验证产品力 → 验证渠道复制力 → 谈规模</b>。
+        </div>
+      </div>
+      <div class="panel">
+        <h4>资本与资源运作</h4>
+        <div style="font-size:13.5px;line-height:2;color:rgba(242,237,225,.8)">
+          亿林实业的产业底子与资本运作经验，为品牌的长跑提供融资节奏与资源对接——<b style="color:var(--gold-2)">让专业的人专心做专业的事</b>。<br/>
+          阶段〇的小批量测试<b style="color:var(--gold-2)">已完成</b>：不是空手讲故事，是带着真实验证数据出发。
+        </div>
+      </div>
+    </div>
+
+    <div class="rv panel" style="margin-top:20px">
+      <h4>渠道与用户资产 · 不是一句话，是四张现成的牌</h4>
+      <div class="cap">别人缺渠道要从零建；我们已经握着能立刻用的四张牌。</div>
+      <div class="asset-grid">
+        <div class="asset-card">
+          <span class="no">01</span>
+          <h5>政企背书渠道<br/>即时可用</h5>
+          <p>黄埔区银发经济促进会会长单位身份，直接对接民政局、老年大学、颐康中心、养老机构等政企渠道，不是「认识人」，是有现成的对接权限。</p>
+        </div>
+        <div class="asset-card">
+          <span class="no">02</span>
+          <h5>展示与体验场景<br/>现成可用</h5>
+          <p>智慧化适老康养展示中心、开泰大道全球化银发经济选品平台——鞋类体验馆、足部测量仪等设施已具备，不需要从零搭建体验场景。</p>
+        </div>
+        <div class="asset-card">
+          <span class="no">03</span>
+          <h5>私域存量用户<br/>即时可触达</h5>
+          <p>现有适老化业务积累的 500–800 人私域种子用户，可直接协同触达，作为第一批真实反馈与种子客户——<b style="color:var(--gold-2)">第一批真实用户不在纸上，在手里</b>。</p>
+        </div>
+        <div class="asset-card">
+          <span class="no">04</span>
+          <h5>可复制的冷启动<br/>方法论</h5>
+          <p>S2B2C 圈层裂变模型——用团长机制把政企渠道、私域用户转化为持续的销售网络。这是一套具体打法，不是一句「我们有资源」。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="rv panel" style="margin-top:20px;border-color:var(--line);background:linear-gradient(160deg,var(--gold-dim),rgba(255,255,255,.02))">
+      <h4>我们在找谁</h4>
+      <div style="font-size:14px;line-height:2.1;color:rgba(242,237,225,.85)">
+        诚邀懂产品、懂品牌的核心合伙人，<b style="color:var(--gold-2)">共同定义这个品牌</b>。<br/>
+        产品定义、品牌方向这些真正的专业命题，我们深知需要一位真正的行家来主导——亿林不越位、不预设答案。具体的角色、分工与合作结构，<em style="font-style:normal;color:var(--gold-2)">等团队组建后再一起商定</em>，这一版规划里写的任何细节，都欢迎推倒重来。
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- ================= S6 路线图 ================= -->
-<section id="s6"> <div class="wm">陆</div> <div class="wrap"> <div class="rv"><div class="kicker">陆 · 三年准备</div> <h2 class="st">三年三步，资金与节奏都已想好</h2> <p class="sub">不是一时兴起——每一阶段的投入量级与启动时点均已规划，达标才进、不达标止损；具体节奏与分工，留待与合伙人共同商定。</p> </div> <div class="rv ph-tabs"> <div class="ph-tab"> <div class="ph">阶段一 · 2026Q4–2027Q1</div> <h4>小步验证</h4> <div class="tm">投入十万量级</div> <div style="font-size:13.5px;line-height:2;color:rgba(242,237,225,.8);margin-top:12px">以最小的成本完成产品与真实用户的第一次握手——验证的是产品力，不是规模。 </div> </div> <div class="ph-tab"> <div class="ph">阶段二 · 2027全年</div> <h4>品牌起步</h4> <div class="tm">自有资金百万量级 + 种子轮</div> <div style="font-size:13.5px;line-height:2;color:rgba(242,237,225,.8);margin-top:12px">从一双鞋到一个品牌：核心渠道建立，种子轮融资到位。 </div> </div> <div class="ph-tab"> <div class="ph">阶段三 · 2028</div> <h4>区域深耕</h4> <div class="tm">投入数百万量级</div> <div style="font-size:13.5px;line-height:2;color:rgba(242,237,225,.8);margin-top:12px">把根据地市场做深做透，视数据启动A轮——规模从来不是第一年的命题。 </div> </div> </div> <div class="rv verdict">这份规划里的数字和节奏，是我们的准备，不是谈判的边界——<em>真正的版本，等合伙人来了再一起写。</em></div> </div> </section>
+<section id="s6">
+  <div class="wm">陆</div>
+  <div class="wrap">
+    <div class="rv"><div class="kicker">陆 · 三年准备</div>
+      <h2 class="st">三年三步，资金与节奏都已想好</h2>
+      <p class="sub">不是一时兴起——每一阶段的投入量级与启动时点均已规划，达标才进、不达标止损；具体节奏与分工，留待与合伙人共同商定。</p>
+    </div>
+
+    <div class="rv ph-tabs" role="tablist" aria-label="三阶段行动路线">
+      <button class="ph-tab act done" data-ph="0" id="ph-tab-0" role="tab" aria-selected="true" aria-controls="ph-body-0">
+        <div class="ph">阶段〇 · 已完成</div><h4>小批量验证</h4><div class="tm">真实社群第一轮触达</div>
+      </button>
+      <button class="ph-tab" data-ph="1" id="ph-tab-1" role="tab" aria-selected="false" aria-controls="ph-body-1" tabindex="-1">
+        <div class="ph">阶段一 · 2026Q4–2027Q1</div><h4>小步验证</h4><div class="tm">100万 · 自有资金 + 种子轮</div>
+      </button>
+      <button class="ph-tab" data-ph="2" id="ph-tab-2" role="tab" aria-selected="false" aria-controls="ph-body-2" tabindex="-1">
+        <div class="ph">阶段二 · 2027 全年</div><h4>品牌起步</h4><div class="tm">天使轮 200万</div>
+      </button>
+      <button class="ph-tab" data-ph="3" id="ph-tab-3" role="tab" aria-selected="false" aria-controls="ph-body-3" tabindex="-1">
+        <div class="ph">阶段三 · 2028</div><h4>区域深耕</h4><div class="tm">数百万量级</div>
+      </button>
+    </div>
+
+    <!-- 阶段〇 -->
+    <div class="ph-body act" data-body="0" id="ph-body-0" role="tabpanel" aria-labelledby="ph-tab-0">
+      <div class="kv">
+        <b>做了什么</b><span>小批量买版测试，已在真实银发社群中完成第一轮触达与反馈。</span>
+        <b>拿到什么</b><span>不是拍脑袋讲故事，是带着真实验证数据出发。</span>
+        <b>与阶段一</b><span>产品力的真正打磨，从阶段一私模研发开始。</span>
+      </div>
+      <div class="kpi">
+        <h5>阶段状态</h5>
+        <ul>
+          <li><b>已完成</b></li>
+          <li>这一阶段的意义不是证明「能卖」，而是证明<b style="font-size:15px">有人愿意认真讨论这双鞋</b>。</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 阶段一 -->
+    <div class="ph-body" data-body="1" id="ph-body-1" role="tabpanel" aria-labelledby="ph-tab-1" tabindex="0">
+      <div class="kv">
+        <b>产品</b><span>1–2 款核心 SKU 完成私模定型，聚焦一个英雄差异点（如中底分区支撑），其余部位改楦、成熟大底过渡控制成本。</span>
+        <b>渠道</b><span>养老渠道软启动（政企资源、机构展示）与圈层社群裂变（团长机制）双线并行，转化亿林现有存量资源为首批真实销量。</span>
+        <b>品牌</b><span>从 0 到 1 建立基础内容资产与官方账号矩阵，确立「活力银发 · 足部健康专业」定位语言，不追求声量，追求认知准确。</span>
+      </div>
+      <div class="kpi">
+        <h5>投入与财务参考</h5>
+        <ul>
+          <li>投入 <b>100万</b> · 自有资金 + 种子轮</li>
+          <li>毛利率约 <b>45%–55%</b><br/><span style="font-size:12.5px;color:rgba(242,237,225,.6)">私模 + 小批量阶段属新品牌第一年合理区间；重点看毛利率能否随规模改善，而非绝对值。</span></li>
+        </ul>
+      </div>
+      <div class="trigger"><b>升级到阶段二的触发标准：</b>核心 SKU 年化 GMV 达预设基准线，且复购 / 转介率达标，即启动阶段二融资。</div>
+    </div>
+
+    <!-- 阶段二 -->
+    <div class="ph-body" data-body="2" id="ph-body-2" role="tabpanel" aria-labelledby="ph-tab-2" tabindex="0">
+      <div class="kv">
+        <b>产品</b><span>V2 版本迭代（基于阶段一真实反馈修正）；拓展 1–2 个新场景款式；视数据评估鞋垫等周边品类，提升客单价与复购频次。</span>
+        <b>渠道</b><span>差异化核心渠道 · 银发经济专属场景：康佰汇、广州康养等银发经济专属平台；线下银发商店、社区银发俱乐部渠道；借助亿林政府资源，在黄埔区、花都区、广州市民政系统建立旗舰体验馆。</span>
+        <b>电商</b><span>天猫 / 京东官方旗舰店正式上线，私域小程序商城成型；线下同步深度复制阶段一跑通的养老渠道模式，聚焦根据地市场，不急于全国铺开。</span>
+        <b>品牌</b><span>KOL / 达人矩阵搭建，开始小规模、可控的付费获客测试，验证 ROI，不是烧钱换量。</span>
+      </div>
+      <div class="kpi">
+        <h5>融资与财务参考</h5>
+        <ul>
+          <li>天使轮 <b>200万</b><br/><span style="font-size:12.5px;color:rgba(242,237,225,.6)">加大产品开发、拓展产品款式、拓展电商与银发经济专属渠道。</span></li>
+          <li>GMV 较阶段一 <b>2–3 倍</b>增长</li>
+          <li>毛利率提升至 <b>55%–65%</b></li>
+          <li>目标：核心根据地市场层面实现<b style="font-size:15px">盈亏平衡</b></li>
+        </ul>
+      </div>
+      <div class="trigger"><b>可复制的「点」：</b>「体验（足部健康检测）+ 分场景展示」模式跑通，成为阶段三复制到「面」的标准单元。</div>
+    </div>
+
+    <!-- 阶段三 -->
+    <div class="ph-body" data-body="3" id="ph-body-3" role="tabpanel" aria-labelledby="ph-tab-3" tabindex="0">
+      <div class="kv">
+        <b>从点到面</b><span>阶段二的旗舰体验馆模式（黄埔 / 花都 / 广州民政系统），复制到 3–5 个重点区域；「体验 + 分场景展示」标准化打法，向更多社区银发专卖店延伸；可考虑搭建付费会员生态（如「乐活俱乐部」），沉淀高价值复购用户。</span>
+        <b>产品</b><span>形成 3–5 个核心 SKU 成熟矩阵，在 300–500 元价格带真正站稳，具备可识别的品类心智。</span>
+        <b>渠道</b><span>从根据地市场扩展到 3–5 个重点区域，线上线下融合成熟，具备承接政府适老化改造项目等异业合作的能力。</span>
+      </div>
+      <div class="kpi">
+        <h5>投入与财务参考</h5>
+        <ul>
+          <li>投入 <b>数百万量级</b><br/><span style="font-size:12.5px;color:rgba(242,237,225,.6)">以阶段一二产生的现金流为主，视规模化需求决定是否启动 A 轮。</span></li>
+          <li>GMV 参考区间 <b>5000万–1亿</b><br/><span style="font-size:12.5px;color:rgba(242,237,225,.6)">视前两年真实数据校准。</span></li>
+          <li>公司层面实现<b style="font-size:15px">盈亏平衡或健康盈利</b></li>
+          <li>此时启动 A 轮，<b style="font-size:15px">故事远比现在扎实</b></li>
+        </ul>
+      </div>
+      <div class="trigger">规模从来不是第一年、第二年的命题——<b>先把根据地做深做透，再把「点」复制成「面」。</b></div>
+    </div>
+
+    <div class="rv verdict">这份规划里的数字和节奏，是我们的准备，不是谈判的边界——<em>真正的版本，等合伙人来了再一起写。</em></div>
+  </div>
+</section>
 
 <!-- ================= S6b 时间轴 ================= -->
 
@@ -663,15 +928,20 @@ document.documentElement.classList.replace('no-js','js');
 document.querySelectorAll('path.draw:not([stroke-dasharray])').forEach(p=>{
   try{const L=p.getTotalLength();if(L>0)p.style.setProperty('--len',L)}catch(_){}
 });
-// count-up（HTML 已写最终值，JS 归零后再动画；无 JS 时数字直接可见）
+// count-up（HTML 已写最终值；滚动进入视口时才归零并起动画，保证打印/截图取到最终值）
 const cu = document.querySelectorAll('.cu');
 const io = new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){
   const el=e.target,to=+el.dataset.to,dec=+el.dataset.dec;let t0=null;
+  el.textContent='0';
+  // 兜底：无头打印/虚拟时间环境下 rAF 不推进，1.5s 后强制落终值（真实浏览器动画 1.6s 内完成并取消兜底）
+  const fb=setTimeout(()=>{el.textContent=to.toFixed(dec)},1500);
   const step=t=>{if(!t0)t0=t;const p=Math.min((t-t0)/1600,1);
     el.textContent=(to*(1-Math.pow(1-p,3))).toFixed(dec);
-    if(p<1)requestAnimationFrame(step);};
+    if(p<1)requestAnimationFrame(step);else clearTimeout(fb);};
   requestAnimationFrame(step);io.unobserve(el);}})},{threshold:.6});
-cu.forEach(el=>{el.textContent='0';io.observe(el)});
+// 打印前把计数器直接置为最终值（无头打印环境 rAF 动画可能不执行）
+window.addEventListener('beforeprint',()=>{cu.forEach(el=>{el.textContent=el.dataset.to})});
+cu.forEach(el=>io.observe(el));
 
 // reveal + chart trigger
 const rio=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');rio.unobserve(e.target)}})},{threshold:.22});
@@ -696,6 +966,32 @@ window.addEventListener('scroll',()=>{
   if(curA&&Date.now()-tocUserScroll>2500)toc.scrollLeft=curA.offsetLeft-toc.clientWidth/2+curA.clientWidth/2;
 },{passive:true});
 totop.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+
+// 三阶段 tab 切换（阶段〇→三）：点击 + 左右方向键导航，带完整 aria 状态
+(function(){
+  const tabs=[...document.querySelectorAll('.ph-tab')];
+  const panels=[...document.querySelectorAll('.ph-body')];
+  if(!tabs.length||!panels.length)return;
+  function activate(i){
+    tabs.forEach((t,j)=>{
+      const on=(j===i);
+      t.classList.toggle('act',on);
+      t.setAttribute('aria-selected',on);
+      t.tabIndex=on?0:-1;
+    });
+    panels.forEach((p,j)=>p.classList.toggle('act',j===i));
+  }
+  tabs.forEach((t,i)=>{
+    t.addEventListener('click',()=>activate(i));
+    t.addEventListener('keydown',e=>{
+      const dir=(e.key==='ArrowRight')?1:(e.key==='ArrowLeft')?-1:0;
+      if(!dir)return;
+      e.preventDefault();
+      const n=(i+dir+tabs.length)%tabs.length;
+      activate(n);tabs[n].focus();
+    });
+  });
+})();
 
 // hero ring parallax (disabled under reduced motion)
 if(!noMotion){
